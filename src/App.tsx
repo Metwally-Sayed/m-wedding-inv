@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ChevronDown, Volume2, VolumeX, MapPin, ExternalLink, Minus, Plus, Send } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
+import { ChevronDown, Volume2, VolumeX, MapPin, ExternalLink } from 'lucide-react';
 
 // Language content
 const content = {
@@ -159,15 +156,11 @@ const content = {
 };
 
 function App() {
-  const [lang, setLang] = useState<'en' | 'es'>('en');
+  const [lang] = useState<'en' | 'es'>('en');
   const [showIntro, setShowIntro] = useState(true);
   const [introVideoEnded, setIntroVideoEnded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [showRSVPDialog, setShowRSVPDialog] = useState(false);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
-  const [guestCount, setGuestCount] = useState(1);
-  const [attending, setAttending] = useState('yes');
-  const [children, setChildren] = useState('no');
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
