@@ -73,3 +73,4 @@ export default defineConfig([
 ```
 # wed-inv
 # wed-inv
+# m-wedding-inv

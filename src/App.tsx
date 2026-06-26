@@ -8,10 +8,10 @@ import { Label } from '@/components/ui/label';
 const content = {
   en: {
     gettingMarried: "WE'RE GETTING MARRIED",
-    date: "16 May 2026",
+    date: "29 September 2026",
     rsvp: "RSVP",
     countdown: "Countdown",
-    until: "UNTIL 16 MAY 2026",
+    until: "UNTIL 29 SEPTEMBER 2026",
     days: "DAYS",
     hours: "HOURS",
     minutes: "MINUTES",
@@ -19,11 +19,11 @@ const content = {
     welcomeText: "We warmly invite you to celebrate our wedding day with us in the beautiful town of Ronda, Andalusia. We look forward to sharing this unforgettable moment with our most special people.",
     venue: "The Venue",
     whereWeCelebrate: "Where we celebrate",
-    venueName: "Nile Flori",
-    venueDate: "16 May 2026",
+    venueName: "Mountain Rose",
+    venueDate: "29 September 2026",
     venueTime: "17:00 - 21:00",
-    venueAddress: "17 Nile Corniche, Maadi Al Khabiri Ash Sharqeyah",
-    venueCity: "Maadi, Cairo Governorate",
+    venueAddress: "6th of October City",
+    venueCity: "Giza Governorate 3260440",
     openInMaps: "Open in Maps",
     dayProgramme: "Day Programme",
     arrival: "ARRIVAL",
@@ -83,10 +83,10 @@ const content = {
   },
   es: {
     gettingMarried: "NOS CASAMOS",
-    date: "16 de Mayo de 2026",
+    date: "29 de Septiembre de 2026",
     rsvp: "CONFIRMAR ASISTENCIA",
     countdown: "Cuenta Atrás",
-    until: "HASTA EL 16 DE MAYO DE 2026",
+    until: "HASTA EL 29 DE SEPTIEMBRE DE 2026",
     days: "DÍAS",
     hours: "HORAS",
     minutes: "MINUTOS",
@@ -95,7 +95,7 @@ const content = {
     venue: "El Lugar",
     whereWeCelebrate: "Dónde celebramos",
     venueName: "Finca El Olivar",
-    venueDate: "16 de Mayo de 2026",
+    venueDate: "29 de Septiembre de 2026",
     venueTime: "17:00 - 21:00",
     venueAddress: "Camino de los Olivos s/n, Ronda",
     venueCity: "Málaga, 29400 – España",
@@ -170,13 +170,14 @@ function App() {
   const [children, setChildren] = useState('no');
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   
   const t = content[lang];
 
   useEffect(() => {
     // Countdown timer
     const updateCountdown = () => {
-      const weddingDate = new Date('2026-05-16T17:00:00');
+      const weddingDate = new Date('2026-09-29T17:00:00');
       const now = new Date();
       const diff = weddingDate.getTime() - now.getTime();
       
@@ -202,6 +203,10 @@ function App() {
     if (!introStarted && videoRef.current) {
       setIntroStarted(true);
       videoRef.current.play();
+      if (audioRef.current) {
+        audioRef.current.play();
+        setIsMuted(false);
+      }
     }
   };
 
@@ -270,10 +275,9 @@ function App() {
       {/* Sound Toggle */}
       <button
         onClick={() => {
-          setIsMuted(!isMuted);
-          if (heroVideoRef.current) {
-            heroVideoRef.current.muted = !isMuted;
-          }
+          const next = !isMuted;
+          setIsMuted(next);
+          if (audioRef.current) audioRef.current.muted = next;
         }}
         className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-elegant flex items-center justify-center text-brown hover:bg-gold hover:text-white transition-all"
       >
@@ -309,7 +313,7 @@ function App() {
             &
           </p>
           <h1 className="font-script text-6xl md:text-8xl lg:text-9xl mb-8 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-            Shrouk
+            Heba
           </h1>
           
           <div className="diamond-separator my-8">
@@ -396,7 +400,7 @@ function App() {
           
           <div className="bg-white rounded-2xl shadow-card overflow-hidden">
             <div className="relative h-64 md:h-80">
-              <img src="/assets/venue-hedsor-front.png" alt="Nile Flori" className="w-full h-full object-cover" />
+              <img src="/assets/venue-hedsor-front.png" alt="Mountain Rose" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
             <div className="p-8 md:p-12 text-center">
@@ -410,7 +414,7 @@ function App() {
               <p className="font-body text-brown/70 mb-6">{t.venueCity}</p>
               
               <a
-                href="https://maps.app.goo.gl/N55VgnEQQWhcwvPY8?g_st=ic"
+                href="https://maps.app.goo.gl/KCHR3mQ7qexVWYw9A?g_st=iw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-gold hover:text-gold-dark transition-colors"
@@ -423,7 +427,7 @@ function App() {
             
             <div className="h-64 bg-brown/5">
               <iframe
-                src="https://www.google.com/maps?q=Nile+Flori,+17+Nile+Corniche,+Maadi+Al+Khabiri+Ash+Sharqeyah,+Maadi,+Cairo+Governorate&output=embed"
+                src="https://www.google.com/maps?q=%D9%85%D8%A7%D9%88%D9%86%D8%AA%D9%86+%D8%B1%D9%88%D8%B2%D8%8C+%D9%82%D8%B3%D9%85+%D8%A3%D9%88%D9%84+6+%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1%D8%8C+%D9%82%D8%B3%D9%85+%D8%AB%D8%A7%D9%84%D8%AB+6+%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1%D8%8C+%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9+%D8%A7%D9%84%D8%AC%D9%8A%D8%B2%D8%A9&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -769,7 +773,7 @@ function App() {
             <img src="/assets/bow-illustration.png" alt="Rings" className="w-24 h-auto mx-auto opacity-50 mb-6" />
             <h2 className="font-script text-5xl text-gold-dark mb-2">Mohamed</h2>
             <p className="font-script text-3xl text-gold-dark mb-2">&</p>
-            <h2 className="font-script text-5xl text-gold-dark mb-4">Shrouk</h2>
+            <h2 className="font-script text-5xl text-gold-dark mb-4">Heba</h2>
             <p className="font-serif text-lg text-gold">{t.date}</p>
           </div>
           
@@ -782,6 +786,9 @@ function App() {
           </p> */}
         </div>
       </footer>
+
+      {/* Background music - starts on intro click, loops across the page */}
+      <audio ref={audioRef} src="/assets/wedding-background-music.mp3" loop />
 
       {/* RSVP Dialog */}
       {/* <Dialog open={showRSVPDialog} onOpenChange={setShowRSVPDialog}>
