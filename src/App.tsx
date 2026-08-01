@@ -18,7 +18,7 @@ const content = {
     whereWeCelebrate: "Where we celebrate",
     venueName: "Mountain Rose",
     venueDate: "29 September 2026",
-    venueTime: "17:00 - 21:00",
+    venueTime: "20:00 - 00:00",
     venueAddress: "6th of October City",
     venueCity: "Giza Governorate 3260440",
     openInMaps: "Open in Maps",
@@ -93,7 +93,7 @@ const content = {
     whereWeCelebrate: "Dónde celebramos",
     venueName: "Finca El Olivar",
     venueDate: "29 de Septiembre de 2026",
-    venueTime: "17:00 - 21:00",
+    venueTime: "20:00 - 00:00",
     venueAddress: "Camino de los Olivos s/n, Ronda",
     venueCity: "Málaga, 29400 – España",
     openInMaps: "Abrir en Maps",
@@ -170,7 +170,7 @@ function App() {
   useEffect(() => {
     // Countdown timer
     const updateCountdown = () => {
-      const weddingDate = new Date('2026-09-29T17:00:00');
+      const weddingDate = new Date('2026-09-29T20:00:00');
       const now = new Date();
       const diff = weddingDate.getTime() - now.getTime();
       
@@ -446,12 +446,12 @@ function App() {
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gold/30 -translate-x-1/2" />
             
             {[
-              { time: '17:00', event: t.arrival },
-              { time: '17:30', event: t.ceremony },
-              { time: '18:30', event: t.cocktails },
-              { time: '19:30', event: t.dinner },
-              { time: '20:30', event: t.cuttingCake },
-              { time: '21:00', event: t.finish },
+              { time: '20:00', event: t.arrival },
+              { time: '20:30', event: t.ceremony },
+              { time: '21:30', event: t.cocktails },
+              { time: '22:30', event: t.dinner },
+              { time: '23:30', event: t.cuttingCake },
+              { time: '00:00', event: t.finish },
             ].map((item, index) => (
               <div key={index} className={`relative flex items-center mb-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                 <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12 text-right' : 'pl-12 text-left'}`}>
